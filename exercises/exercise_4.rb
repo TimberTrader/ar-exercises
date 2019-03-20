@@ -13,12 +13,11 @@ newStore = Store.create(name: 'Whistler', annual_revenue: 190000, mens_apparel: 
 newStore = Store.create(name: 'Yaletown', annual_revenue: 430000, mens_apparel: true, womens_apparel: true)
 newStore.save
 puts Store.count
-# @Store3 = Store.find_by(name: 'Surrey')
-# @Store4 = Store.find_by(name: 'Whistler')
-# @Store5 = Store.find_by(name: 'Yaletown')
 
+@mens_stores = Store.where('mens_apparel')
+@mens_stores.each do |store| puts "#{store.name}, #{store.annual_revenue}"
+end
 
-
-
-
-
+@womens_stores = Store.where('womens_apparel and annual_revenue < 1000000')
+@womens_stores.each do |store| puts "#{store.name}, #{store.annual_revenue}"
+end
